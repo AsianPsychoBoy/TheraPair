@@ -1,32 +1,49 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { AboutComponent } from './about/about.component';
-import { JoinComponent } from './join/join.component';
 import { NavComponent } from './nav/nav.component';
 import { JoinTherapistsComponent } from './join-therapists/join-therapists.component';
 import { JoinPatientsComponent } from './join-patients/join-patients.component';
 
+import { AuthService } from './services/auth.service';
+
+import { environment } from '../environments/environment';
+import { SurveyComponent } from './survey/survey.component';
+import { JoinComponent } from './join/join.component';
+
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    SignInComponent,
-    AboutComponent,
-    JoinComponent,
-    NavComponent,
-    JoinTherapistsComponent,
-    JoinPatientsComponent
+	AppComponent,
+	HomeComponent,
+	SignInComponent,
+	AboutComponent,
+	NavComponent,
+	JoinTherapistsComponent,
+	JoinPatientsComponent,
+	SurveyComponent,
+	JoinComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule
+	BrowserModule,
+	AppRoutingModule,
+	AngularFireModule.initializeApp(environment.firebase),
+	AngularFireAuthModule,
+	AngularFireStorageModule,
+	AngularFirestoreModule
   ],
-  providers: [],
+  providers: [
+	  AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
