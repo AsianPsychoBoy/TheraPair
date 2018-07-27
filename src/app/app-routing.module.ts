@@ -7,6 +7,7 @@ import { JoinPatientsComponent } from './join-patients/join-patients.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { JoinComponent } from './join/join.component';
 import { SurveyComponent } from './survey/survey.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 const routes: Routes = [
 	{
@@ -23,17 +24,23 @@ const routes: Routes = [
 		children: [
 			{
 				path: 'therapist',
-				component: SurveyComponent
+				component: SignUpComponent,
+				data: { surveyType: 'therapist' }
 			},
 			{
 				path: 'patient',
-				component: SurveyComponent
+				component: SignUpComponent,
+				data: { surveyType: 'patient' }
 			}
 		]
 	},
 	{
 		path: 'sign-in',
 		component: SignInComponent
+	},
+	{
+		path: 'survey',
+		component: SurveyComponent
 	},
 	{
 		path: '**',

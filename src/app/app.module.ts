@@ -20,6 +20,7 @@ import { AuthService } from './services/auth.service';
 import { environment } from '../environments/environment';
 import { SurveyComponent } from './survey/survey.component';
 import { JoinComponent } from './join/join.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { JoinComponent } from './join/join.component';
 	JoinTherapistsComponent,
 	JoinPatientsComponent,
 	SurveyComponent,
-	JoinComponent
+	JoinComponent,
+	SignUpComponent
   ],
   imports: [
 	BrowserModule,
