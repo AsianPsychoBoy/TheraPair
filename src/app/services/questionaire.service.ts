@@ -3,7 +3,7 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 import { AuthService } from './auth.service';
 import { combineLatest, from, Observable } from 'rxjs';
 import { map, flatMap } from 'rxjs/operators';
-import { ThrowStmt } from '../../../node_modules/@angular/compiler';
+import { User } from '../models/users';
 
 @Injectable({
 	providedIn: 'root'
@@ -12,7 +12,7 @@ export class QuestionaireService {
 
 	private questionsCollection: AngularFirestoreCollection<Question>;
 
-	private user: firebase.User;
+	private user: User;
 
 	constructor(private afs: AngularFirestore, private auth: AuthService) {
 		this.questionsCollection = this.afs.collection<Question>('questions');

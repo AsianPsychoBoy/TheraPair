@@ -6,13 +6,13 @@
 	
 	<div class="collapse navbar-collapse" [collapse]="isCollapsed" >
 		<ul class="navbar-nav mr-auto">
-			<li class="nav-item active">
-				<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+			<li class="nav-item" routerLink="/home" routerLinkActive="active">
+				<a class="nav-link">Home</a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">Link</a>
+			<li class="nav-item" routerLink="/about" routerLinkActive="active">
+				<a class="nav-link">About</a>
 			</li>
 		</ul>
-		<button class="btn btn-primary my-2 my-sm-0" type="button">Sign In</button>
+		<button class="btn btn-primary my-2 my-sm-0" type="button" routerLink="/sign-in">Sign In</button>
 	</div>
 </nav>
