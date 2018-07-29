@@ -1,3 +1,18 @@
-<p>
-  nav works!
-</p>
+<nav class="navbar navbar-expand-sm navbar-dark bg-secondary fixed-top">
+	<a class="navbar-brand" href="#">Navbar</a>
+	<button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	
+	<div class="collapse navbar-collapse" [collapse]="isCollapsed" >
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+				<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#">Link</a>
+			</li>
+		</ul>
+		<button class="btn btn-primary my-2 my-sm-0" type="button">Sign In</button>
+	</div>
+</nav>

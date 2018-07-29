@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+$theme-colors: (
+	"primary": #00B5D6,
+	"secondary": #0F547E,
+	"accent": #FC7F40
+);
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
+@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond|Julius+Sans+One|Quicksand');
+
+body {
+	font-family: 'Cormorant Garamond', 'Open Sans', sans-serif
+}
+
+h1, h2, h3, h4, button {
+	font-family: 'Julius Sans One', 'Open Sans', sans-serif
+}

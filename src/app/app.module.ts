@@ -6,6 +6,8 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -21,6 +23,7 @@ import { environment } from '../environments/environment';
 import { SurveyComponent } from './survey/survey.component';
 import { JoinComponent } from './join/join.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 	JoinPatientsComponent,
 	SurveyComponent,
 	JoinComponent,
-	SignUpComponent
+	SignUpComponent,
+	FooterComponent
   ],
   imports: [
 	BrowserModule,
@@ -41,7 +45,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 	AngularFireModule.initializeApp(environment.firebase),
 	AngularFireAuthModule,
 	AngularFireStorageModule,
-	AngularFirestoreModule
+	AngularFirestoreModule,
+	CollapseModule.forRoot()
   ],
   providers: [
 	  AuthService
