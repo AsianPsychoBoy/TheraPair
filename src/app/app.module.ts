@@ -24,6 +24,7 @@ import { SurveyComponent } from './survey/survey.component';
 import { JoinComponent } from './join/join.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { FooterComponent } from './footer/footer.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { FooterComponent } from './footer/footer.component';
 	SurveyComponent,
 	JoinComponent,
 	SignUpComponent,
-	FooterComponent
+	FooterComponent,
+	DashboardComponent
   ],
   imports: [
 	BrowserModule,

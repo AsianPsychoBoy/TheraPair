@@ -8,6 +8,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { JoinComponent } from './join/join.component';
 import { SurveyComponent } from './survey/survey.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
 	{
@@ -19,18 +20,12 @@ const routes: Routes = [
 		component: AboutComponent
 	},
 	{
-		path: 'join',
-		component: JoinComponent,
+		path: 'user/:id',
+		component: DashboardComponent,
 		children: [
 			{
-				path: 'therapist',
-				component: SignUpComponent,
-				data: { surveyType: 'therapist' }
-			},
-			{
-				path: 'patient',
-				component: SignUpComponent,
-				data: { surveyType: 'patient' }
+				path: 'survey',
+				component: SurveyComponent
 			}
 		]
 	},
@@ -39,8 +34,8 @@ const routes: Routes = [
 		component: SignInComponent
 	},
 	{
-		path: 'survey',
-		component: SurveyComponent
+		path: 'sign-up',
+		component: SignUpComponent
 	},
 	{
 		path: '**',

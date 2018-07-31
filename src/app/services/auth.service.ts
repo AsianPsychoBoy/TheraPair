@@ -3,7 +3,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { auth } from 'firebase';
 import { Observable, from } from 'rxjs';
-import { flatMap } from 'rxjs/operators';
+import { flatMap, map, switchMap } from 'rxjs/operators';
 import { User } from '../models/users';
 
 @Injectable({
@@ -21,12 +21,44 @@ export class AuthService {
 		);
 	}
 
-	login() {
-		return from(this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider()));
+	loginWithGoogle() {
+		return from(this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider()))
+			.pipe(
+				switchMap(u => {
+					return this.user$;
+				}),
+				map(u => {
+					if (!u) {
+						throw new Error('You have not signed up.');
+					} else {
+						return u;
+					}
+				})
+			);
 	}
 
 	logout() {
 		return from(this.afAuth.auth.signOut());
+	}
+
+	signUpWithGoogle() {
+		return from(this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider()))
+			.pipe(
+				flatMap(u => {
+					if (u.additionalUserInfo.isNewUser) {
+						return this.afs.doc<User>(`users/${u.user.uid}`).set({
+							uid: u.user.uid,
+							displayName: u.user.displayName,
+							email: u.user.email,
+							role: 'unset',
+							completedSurvey: false
+						});
+					} else {
+						throw new Error('You have already signed up.');
+					}
+				}),
+				switchMap(() => this.user$)
+			);
 	}
 
 	setRole(uid: string, role: 'therapist' | 'patient') {
@@ -37,3 +69,6 @@ export class AuthService {
 		this.afs.doc<User>(`users/${uid}`).update({ completedSurvey });
 	}
 }
+
+// interface SignUpOptions {
+// }
